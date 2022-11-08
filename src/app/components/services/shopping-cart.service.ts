@@ -14,9 +14,9 @@ export class ShoppingCartService {
     Observer<ShoppingCart>
   >();
   private _products: Product[];
+  //TODO: implement storage
 
   constructor(private _productService: ProductsService) {
-    //this._productService.all().subscribe((products)=>this._products = products);
     this._products = this._productService.getProducts();
     this._subscriptionObservable = new Observable<ShoppingCart>(
       (observer: Observer<ShoppingCart>) => {
@@ -47,7 +47,7 @@ export class ShoppingCartService {
     item.quantity += quantity;
     cart.items = cart.items.filter((cartItem) => cartItem.quantity > 0);
 
-    this.calculateCart(cart);
+    //this.calculateCart(cart);
     //this.save(cart);
     this.dispatch(cart);
   }
@@ -64,11 +64,13 @@ export class ShoppingCartService {
 
   private retrieve(): ShoppingCart {
     const cart = new ShoppingCart();
-
+    // TODO: replace with storage feature
     return cart;
   }
 
-  private save(cart: ShoppingCart): void {}
+  private save(cart: ShoppingCart): void {
+    //implement saving the cart to storage.
+  }
 
   private dispatch(cart: ShoppingCart): void {
     this._subscribers.forEach((sub) => {
@@ -78,9 +80,5 @@ export class ShoppingCartService {
         //
       }
     });
-  }
-
-  getQuantity() {
-    return this._products.length;
   }
 }
