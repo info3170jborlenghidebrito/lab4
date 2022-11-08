@@ -26,7 +26,7 @@ import { ProductDetailsComponent } from './components/products/product-details/p
     RouterModule.forRoot([
       { path: 'products', component: ProductsListComponent },
       { path: 'products-list', redirectTo: '/products', pathMatch: 'full' },
-      { path: 'products/:productId', component: ProductDetailsComponent },
+      { path: 'products/:productId/:rate', component: ProductDetailsComponent },
       { path: 'cart', component: ShoppingCartComponent },
       { path: 'about-us', component: AboutUsComponent },
       { path: 'contact', component: ContactComponent },
