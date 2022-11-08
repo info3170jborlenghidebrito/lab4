@@ -1,1 +1,4 @@
-<app-cart-item *ngFor="let cart of shoppingCart" [cart]="cart"> </app-cart-item>
+<div class="cart-item" *ngFor="let item of cartItems">
+  <span>{{ item.productId }}</span>
+  <span>{{ item.quantity }}</span>
+</div>

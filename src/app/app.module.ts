@@ -10,13 +10,14 @@ import { MatBadgeModule } from '@angular/material/badge';
 import { MatCardModule } from '@angular/material/card';
 
 import { AppComponent } from './app.component';
-import { ProductsListComponent } from './components/products-list/products-list.component';
+import { ProductsListComponent } from './components/products/products-list/products-list.component';
 import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { AboutUsComponent } from './components/about-us/about-us.component';
 import { ContactComponent } from './components/contact/contact.component';
-import { ProductComponent } from './components/product/product.component';
+import { ProductItemComponent } from './components/products/product-item/product-item.component';
 import { CartItemComponent } from './components/cart-item/cart-item.component';
+import { ProductDetailsComponent } from './components/products/product-details/product-details.component';
 
 @NgModule({
   imports: [
@@ -24,16 +25,12 @@ import { CartItemComponent } from './components/cart-item/cart-item.component';
     FormsModule,
     RouterModule.forRoot([
       { path: 'products', component: ProductsListComponent },
-      { path: 'cart', component: ShoppingCartComponent },
-      // route for the about us component
-      { path: 'about-us', component: AboutUsComponent },
-      // route for the forth component
-      { path: 'contact', component: ContactComponent },
-      // route redirects automatically to the forth component
       { path: 'products-list', redirectTo: '/products', pathMatch: 'full' },
-      // 2 more routes for the products list page
-      { path: 'prods', redirectTo: '/products', pathMatch: 'full' },
-      { path: '', redirectTo: '/contact', pathMatch: 'full' },
+      { path: 'products/:productId', component: ProductDetailsComponent },
+      { path: 'cart', component: ShoppingCartComponent },
+      { path: 'about-us', component: AboutUsComponent },
+      { path: 'contact', component: ContactComponent },
+      { path: '', redirectTo: '/products', pathMatch: 'full' },
       { path: '**', component: PageNotFoundComponent },
     ]),
     MatToolbarModule,
@@ -50,8 +47,9 @@ import { CartItemComponent } from './components/cart-item/cart-item.component';
     PageNotFoundComponent,
     AboutUsComponent,
     ContactComponent,
-    ProductComponent,
+    ProductItemComponent,
     CartItemComponent,
+    ProductDetailsComponent,
   ],
   bootstrap: [AppComponent],
 })
